@@ -12,13 +12,12 @@ public class Movement : MonoBehaviour {
 
     void FixedUpdate() {
         movement();
-        MouseFollow();
     }
 
 
 
     //This void is used for movement of the player, it is used to perform when a movement key is pressed to move in the direction the player is trying to go.
-    void movement() {
+     public void movement() {
         if (Input.GetKey("d"))
         {
             transform.position += new Vector3(1, 0, 0) * PlayerSpeed * Time.deltaTime;
@@ -41,13 +40,5 @@ public class Movement : MonoBehaviour {
         }
     }
 
-    //This function is used to make the character follow the mouses position by updating and then changing the position of the player accordingly.
-    void MouseFollow() {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        Vector2 mouseDirection = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-
-        transform.up = mouseDirection;
-    }
+   
 }
