@@ -6,16 +6,10 @@ public class Movement : MonoBehaviour {
 
     public int PlayerSpeed = 0;
 
-
-
-	
-
     void FixedUpdate() {
         movement();
     }
-
-
-
+    
     //This void is used for movement of the player, it is used to perform when a movement key is pressed to move in the direction the player is trying to go.
      public void movement() {
         if (Input.GetKey("d"))

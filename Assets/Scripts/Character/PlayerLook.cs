@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour {
 
-
-
     void FixedUpdate() {
         MouseFollow();
     }
-
-
 
     //This function is used to make the character follow the mouses position by updating and then changing the position of the player accordingly.
     void MouseFollow()
