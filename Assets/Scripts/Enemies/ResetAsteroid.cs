@@ -5,21 +5,54 @@ using UnityEngine;
 public class ResetAsteroid : MonoBehaviour {
 
     public GameObject AsteroidSpawner;
-
+	public int AsteroidHealth = 10;
+	public int CurrentEnemies = 0;
+	public GameObject Bug;
+	public Transform SpawnLocation; 
+	
     void Start()
     {
         AsteroidSpawner = GameObject.Find("AsteroidSpawner");
+		SpawnLocation = this.gameObject.transform.GetChild(0);
     }
-
+	
+	void FixedUpdate(){
+		AsteroidDestroyed();
+		if (CurrentEnemies < 6){
+			CurrentEnemies += 1;
+			EnemySpawn();
+		}
+	}
+	public void AsteroidDestroyed(){
+	
+		if (AsteroidHealth < 0){
+			Debug.Log("Asteroid has been destroyed!");
+			//Add something here later on talking about adding points and getting the object to be able to haddle that!
+			Destroy(gameObject);
+			AsteroidSpawner.GetComponent<SpawnAsteroids>().AsteroidCount -= 1;
+		}
+	
+	}
     //This function checks to see if an asteroid collides with a building it then deletes it and updates the asteroid variable in the spawner script.
     void OnCollisionEnter2D(Collision2D Collision)
     {
-        AsteroidSpawner = GameObject.Find("AsteroidSpawner");
+		//AsteroidSpawner = GameObject.Find("AsteroidSpawner");
+		
         if (Collision.gameObject.tag == "Building")
         {
             Debug.Log("Asteroid being deleted");
             Destroy(gameObject);
             AsteroidSpawner.GetComponent<SpawnAsteroids>().AsteroidCount -= 1;
         }
+		else if (Collision.gameObject.tag == "Bullet"){
+			Debug.Log("Asteroid is being shot!");
+			AsteroidHealth -= 1;
+			Destroy(Collision.gameObject);
+		}
     }
+	
+	void EnemySpawn(){
+		Instantiate(Bug);
+		Bug.transform.SetPositionAndRotation(SpawnLocation.position, SpawnLocation.rotation);
+	}
 }

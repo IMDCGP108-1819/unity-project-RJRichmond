@@ -268,7 +268,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e36e80ab92e7fd347abb7eba0a7e03b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf027260ea799764c8d5bbe3acae9730, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -390,6 +390,34 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359943757}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &462713736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 462713737}
+  m_Layer: 0
+  m_Name: FiringPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &462713737
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462713736}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.12953137, y: 0.49698785, z: 0.0014638074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 997925441}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665209401
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {x: 0, y: -1.29}
   size: {x: 45, y: 45}
-  Asteroid: {fileID: 1082390370199326, guid: 849349bba42f984449d2b4ed9c7f9d4d, type: 2}
+  Asteroid: {fileID: 1622210983298812, guid: 9dc26550113881c4b83528b46a24791a, type: 2}
   AsteroidCount: 0
 --- !u!4 &676329182
 Transform:
@@ -697,7 +725,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.13253137, y: 0.05201218, z: -0.0014638074}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 462713737}
   m_Father: {fileID: 1785887812}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1530,10 +1559,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1785887810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29da2db0d4fc5214092848139c90e064, type: 3}
+  m_Script: {fileID: 11500000, guid: e20553d7b0c50e2418415938d17665da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSpeed: 2
+  PlayerSpeed: 3
+  Health: 100
+  Bullet: {fileID: 1998980079493470, guid: 86dbf31d375725f4ba476964a0ece73f, type: 2}
+  FireRate: 0.2
+  FireAble: 1
+  FiringPosition: {fileID: 462713737}
 --- !u!4 &1785887812
 Transform:
   m_ObjectHideFlags: 0
