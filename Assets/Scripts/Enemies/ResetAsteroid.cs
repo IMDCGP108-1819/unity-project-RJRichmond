@@ -12,7 +12,7 @@ public class ResetAsteroid : MonoBehaviour {
 	
     void Start()
     {
-        AsteroidSpawner = GameObject.Find("AsteroidSpawner");
+        AsteroidSpawner = GameObject.FindGameObjectWithTag("AsteroidSpawner");
 		SpawnLocation = this.gameObject.transform.GetChild(0);
     }
 	
@@ -36,8 +36,8 @@ public class ResetAsteroid : MonoBehaviour {
     //This function checks to see if an asteroid collides with a building it then deletes it and updates the asteroid variable in the spawner script.
     void OnCollisionEnter2D(Collision2D Collision)
     {
-		//AsteroidSpawner = GameObject.Find("AsteroidSpawner");
-		
+        AsteroidSpawner = GameObject.FindGameObjectWithTag("AsteroidSpawner");
+
         if (Collision.gameObject.tag == "Building")
         {
             Debug.Log("Asteroid being deleted");
