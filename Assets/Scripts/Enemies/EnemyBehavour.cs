@@ -12,7 +12,6 @@ public class EnemyBehavour : MonoBehaviour {
 	public int MinDist = 4;
 	
 	void Start(){
-        //Asteroid = this.gameObject.transform.parent;
         Player = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 

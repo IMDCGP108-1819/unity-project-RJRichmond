@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4926495910921722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpawnLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 58098594395317462}
   - component: {fileID: 114040413094794094}
   - component: {fileID: 50848246348827598}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Squiggle asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -40,14 +40,16 @@ public class ResetAsteroid : MonoBehaviour {
 
         if (Collision.gameObject.tag == "Building")
         {
+			AsteroidSpawner.GetComponent<SpawnAsteroids>().AsteroidCount -= 1;
             Debug.Log("Asteroid being deleted");
             Destroy(gameObject);
-            AsteroidSpawner.GetComponent<SpawnAsteroids>().AsteroidCount -= 1;
+            
         }
 		else if (Collision.gameObject.tag == "Bullet"){
 			Debug.Log("Asteroid is being shot!");
 			AsteroidHealth -= 1;
-			Destroy(Collision.gameObject);
+			//Collision.SetActive(false);
+			AsteroidSpawner.GetComponent<SpawnAsteroids>().AsteroidCount -= 1;
 		}
     }
 	

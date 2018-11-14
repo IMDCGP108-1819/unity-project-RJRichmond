@@ -4,22 +4,51 @@ using UnityEngine;
 
 public class CharController : MonoBehaviour {
 
-    public int PlayerSpeed = 0;
+    public int PlayerSpeed = 2;
     public int Health = 100;
     public GameObject Bullet;
     public float FireRate = 0.2f;
     public bool FireAble = true;
-    public Transform FiringPosition;
-
+    private Transform FiringPosition;
+	public GameObject [] PlayerBullets;
+	public bool BulletsLeft = true;
+	public int AmountOfBulletsActive = 0;
+	public int AllBullets = 8;
+	
+	void Start(){
+		for (int i = 0; i < AllBullets; i++)
+		{
+			Instantiate(Bullet);
+			Bullet.SetActive(false);
+		}
+	}
+	
+	private GameObject NewBullet(){
+		for (int i = 0; i < AllBullets; i++){
+			if (!PlayerBullets[i].activeSelf){
+				return PlayerBullets[i];
+			} 
+		}
+		return null;
+	}
+	
     void FixedUpdate() {
         movement();
         Shooting();
+		FiringPosition = GameObject.FindGameObjectWithTag("FiringPosition").transform;
+		if (AmountOfBulletsActive <= 0){
+			BulletsLeft = false;
+		} else {
+			BulletsLeft = true;
+		}
     }
-
+            
     public void Shooting() {
-        if (Input.GetKey("p") && FireAble) {
-            Debug.Log("Shooting happens");
+        if (Input.GetButtonDown("Fire1") && FireAble) {
+            if (BulletsLeft){
+			Debug.Log("Shooting happens");
             StartCoroutine(Firing());
+			}
         }
     }
 
@@ -48,8 +77,12 @@ public class CharController : MonoBehaviour {
 
     IEnumerator Firing() {
         FireAble = false;
-        Instantiate(Bullet);
-        Bullet.transform.SetPositionAndRotation(FiringPosition.position, FiringPosition.rotation);
+		GameObject ABullet = NewBullet();
+		if (ABullet != null){
+			ABullet.SetActive(true);
+			ABullet.transform.SetPositionAndRotation(FiringPosition.position, FiringPosition.rotation);
+			AmountOfBulletsActive += 1;
+		}
         yield return new WaitForSeconds(FireRate);
         FireAble = true;
    } 

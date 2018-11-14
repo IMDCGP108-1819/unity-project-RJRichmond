@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 462713737}
   m_Layer: 0
   m_Name: FiringPosition
-  m_TagString: Untagged
+  m_TagString: FiringPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 676329181}
   m_Layer: 0
   m_Name: AsteroidSpawner
-  m_TagString: Untagged
+  m_TagString: AsteroidSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,7 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   center: {x: 0, y: -1.29}
   size: {x: 45, y: 45}
-  Asteroid: {fileID: 1622210983298812, guid: 9dc26550113881c4b83528b46a24791a, type: 2}
+  Asteroid: {fileID: 1438738354045404, guid: 9dc26550113881c4b83528b46a24791a, type: 2}
   AsteroidCount: 0
 --- !u!4 &676329182
 Transform:
@@ -1546,7 +1546,7 @@ GameObject:
   - component: {fileID: 1785887813}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1567,7 +1567,17 @@ MonoBehaviour:
   Bullet: {fileID: 1998980079493470, guid: 86dbf31d375725f4ba476964a0ece73f, type: 2}
   FireRate: 0.2
   FireAble: 1
-  FiringPosition: {fileID: 462713737}
+  PlayerBullets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  BulletsLeft: 1
+  AmountOfBulletsActive: 0
 --- !u!4 &1785887812
 Transform:
   m_ObjectHideFlags: 0
