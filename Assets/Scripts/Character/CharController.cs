@@ -18,8 +18,8 @@ public class CharController : MonoBehaviour {
 	void Start(){
 		for (int i = 0; i < AllBullets; i++)
 		{
-			Instantiate(Bullet);
-			Bullet.SetActive(false);
+			PlayerBullets[i] = Instantiate(Bullet);
+			PlayerBullets[i].SetActive(false);
 		}
 	}
 	
@@ -33,22 +33,19 @@ public class CharController : MonoBehaviour {
 	}
 	
     void FixedUpdate() {
+        FiringPosition = GameObject.FindGameObjectWithTag("FiringPosition").transform;
         movement();
         Shooting();
-		FiringPosition = GameObject.FindGameObjectWithTag("FiringPosition").transform;
-		if (AmountOfBulletsActive <= 0){
-			BulletsLeft = false;
-		} else {
-			BulletsLeft = true;
-		}
+		
+		
     }
             
     public void Shooting() {
         if (Input.GetButtonDown("Fire1") && FireAble) {
-            if (BulletsLeft){
+            
 			Debug.Log("Shooting happens");
             StartCoroutine(Firing());
-			}
+			
         }
     }
 
@@ -79,7 +76,8 @@ public class CharController : MonoBehaviour {
         FireAble = false;
 		GameObject ABullet = NewBullet();
 		if (ABullet != null){
-			ABullet.SetActive(true);
+            ABullet.transform.SetPositionAndRotation(FiringPosition.position, FiringPosition.rotation);
+            ABullet.SetActive(true);
 			ABullet.transform.SetPositionAndRotation(FiringPosition.position, FiringPosition.rotation);
 			AmountOfBulletsActive += 1;
 		}

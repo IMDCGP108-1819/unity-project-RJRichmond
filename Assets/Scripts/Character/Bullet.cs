@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
     public Rigidbody2D rigid;
 	public GameObject Player;
 	
-    void Start() {
+    void OnEnable() {
         rigid = GetComponent<Rigidbody2D>();
         rigid.AddForce(transform.up * Force);
         StartTime = Time.time;

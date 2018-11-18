@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 375271903}
   m_Layer: 0
   m_Name: Fire Location
-  m_TagString: Untagged
+  m_TagString: FiringPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1567,7 +1567,18 @@ MonoBehaviour:
   Bullet: {fileID: 1998980079493470, guid: 86dbf31d375725f4ba476964a0ece73f, type: 2}
   FireRate: 0.2
   FireAble: 1
-  FiringPosition: {fileID: 375271903}
+  PlayerBullets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  BulletsLeft: 1
+  AmountOfBulletsActive: 0
+  AllBullets: 8
 --- !u!4 &1785887812
 Transform:
   m_ObjectHideFlags: 0
