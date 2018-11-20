@@ -547,6 +547,15 @@ MonoBehaviour:
   size: {x: 45, y: 45}
   Asteroid: {fileID: 1438738354045404, guid: 9dc26550113881c4b83528b46a24791a, type: 2}
   AsteroidCount: 0
+  Asteroids:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  AsteroidAvaliable: 1
+  AmountOfAsteroidsActive: 0
+  AllAsteroids: 5
 --- !u!4 &676329182
 Transform:
   m_ObjectHideFlags: 0
@@ -1231,6 +1240,7 @@ GameObject:
   - component: {fileID: 1514383458}
   - component: {fileID: 1514383457}
   - component: {fileID: 1514383456}
+  - component: {fileID: 1514383459}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -1318,6 +1328,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1514383454}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!50 &1514383459
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1514383454}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1654488987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,6 +1608,7 @@ MonoBehaviour:
   - {fileID: 0}
   BulletsLeft: 1
   AmountOfBulletsActive: 0
+  AllBullets: 8
 --- !u!4 &1785887812
 Transform:
   m_ObjectHideFlags: 0
@@ -1604,7 +1635,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

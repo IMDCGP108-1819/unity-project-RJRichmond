@@ -123,6 +123,16 @@ MonoBehaviour:
   CurrentEnemies: 0
   Bug: {fileID: 1387537138484672, guid: 315f91b4d35fc4a4fbccc34b971f154b, type: 2}
   SpawnLocation: {fileID: 4926495910921722}
+  BugEnemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  AmountOfBugs: 6
+  BugLeft: 1
+  AmountOfBugsActive: 0
 --- !u!212 &212677833401422172
 SpriteRenderer:
   m_ObjectHideFlags: 1

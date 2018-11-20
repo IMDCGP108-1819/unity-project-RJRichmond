@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1387537138484672}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.312866, y: 14.916502, z: 0}
+  m_LocalPosition: {x: 11.460907, y: 1.7228115, z: 0}
   m_LocalScale: {x: 1.4888124, y: 1.4888124, z: 1.4888124}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,13 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8193b83101a8ea344be14ba950ff3c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHealth: 5
+  EnemyHealth: 50
   MoveSpeed: 2
   LookSpeed: 5
   Player: {fileID: 0}
   Asteroid: {fileID: 0}
   MaxDist: 10
-  MinDist: 4
+  MinDist: 0
 --- !u!212 &212276376511112638
 SpriteRenderer:
   m_ObjectHideFlags: 1
