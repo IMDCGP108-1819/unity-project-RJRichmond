@@ -9,12 +9,35 @@ public class ResetAsteroid : MonoBehaviour {
 	public int CurrentEnemies = 0;
 	public GameObject Bug;
 	public Transform SpawnLocation; 
+	public GameObject [] BugEnemies;
+	public int AmountOfBugs = 6;
+	public bool BugLeft = true;
+	public int AmountOfBugsActive = 0;
+	
+	void OnEnable(){
+		AsteroidHealth = 10;
+	
+	}
 	
     void Start()
     {
         AsteroidSpawner = GameObject.FindGameObjectWithTag("AsteroidSpawner");
 		SpawnLocation = this.gameObject.transform.GetChild(0);
+		for (int i = 0; i < AmountOfBugs; i++){
+			BugEnemies[i] = Instantiate(Bug);
+			BugEnemies[i].transform.parent = gameObject.transform;
+			BugEnemies[i].SetActive(false);
+		}
     }
+	
+	private GameObject NewBug(){
+		for (int i = 0; i < AmountOfBugs; i++){
+			if (!BugEnemies[i].activeSelf){
+				return BugEnemies[i];
+			}
+		}
+		return null;
+	}
 	
 	void FixedUpdate(){
 		AsteroidDestroyed();
@@ -28,7 +51,7 @@ public class ResetAsteroid : MonoBehaviour {
 		if (AsteroidHealth < 0){
 			Debug.Log("Asteroid has been destroyed!");
 			//Add something here later on talking about adding points and getting the object to be able to haddle that!
-			Destroy(gameObject);
+			gameObject.SetActive(false);
 			AsteroidSpawner.GetComponent<SpawnAsteroids>().AsteroidCount -= 1;
 		}
 	
@@ -42,19 +65,24 @@ public class ResetAsteroid : MonoBehaviour {
         {
 			AsteroidSpawner.GetComponent<SpawnAsteroids>().AsteroidCount -= 1;
             Debug.Log("Asteroid being deleted");
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             
         }
 		else if (Collision.gameObject.tag == "Bullet"){
 			Debug.Log("Asteroid is being shot!");
 			AsteroidHealth -= 1;
 			//Collision.SetActive(false);
-			AsteroidSpawner.GetComponent<SpawnAsteroids>().AsteroidCount -= 1;
 		}
     }
 	
 	void EnemySpawn(){
-		Instantiate(Bug);
-		Bug.transform.SetPositionAndRotation(SpawnLocation.position, SpawnLocation.rotation);
+		GameObject ABug = NewBug();
+		if (ABug != null){
+			ABug.transform.SetPositionAndRotation(SpawnLocation.position, SpawnLocation.rotation);
+			ABug.SetActive(true);
+			AmountOfBugsActive += 1;
+		}
+		//Instantiate(Bug);
+		//Bug.transform.SetPositionAndRotation(SpawnLocation.position, SpawnLocation.rotation);
 	}
 }
