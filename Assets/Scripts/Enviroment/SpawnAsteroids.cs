@@ -49,7 +49,7 @@ public class SpawnAsteroids : MonoBehaviour {
         //Instantiate(Asteroid, pos, Quaternion.identity);
     }
 
-    //This is something which is only available in the editor and it is used to show location of the size and center of the area.
+    //This is something which is only avaliable in the editor and it is used to show location of the size and center of the area.
     void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
