@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharController : MonoBehaviour {
 
@@ -36,6 +37,7 @@ public class CharController : MonoBehaviour {
         FiringPosition = GameObject.FindGameObjectWithTag("FiringPosition").transform;
         movement();
         Shooting();
+        LevelRestart();
 		
 		
     }
@@ -83,6 +85,13 @@ public class CharController : MonoBehaviour {
 		}
         yield return new WaitForSeconds(FireRate);
         FireAble = true;
-   } 
+   }
+
+    void LevelRestart() {
+        if (Health < 0) {
+            SceneManager.LoadScene(0);
+        }
+
+    }
    
 }

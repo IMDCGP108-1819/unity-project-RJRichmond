@@ -61,7 +61,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &61215177093254524
 BoxCollider2D:
@@ -104,6 +104,7 @@ MonoBehaviour:
   LookSpeed: 5
   Player: {fileID: 0}
   Asteroid: {fileID: 0}
+  Score: {fileID: 0}
   MaxDist: 10
   MinDist: 0
 --- !u!212 &212276376511112638

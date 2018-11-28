@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBehavour : MonoBehaviour {
-	public int EnemyHealth = 50;
+	public int EnemyHealth = 20;
 	public int MoveSpeed = 2;
     public float LookSpeed = 5f;
 	public GameObject Player;
 	public GameObject Asteroid;
+    public GameObject Score;
 	public int MaxDist = 10;
 	public int MinDist = 4;
 	
@@ -42,9 +43,12 @@ public class EnemyBehavour : MonoBehaviour {
 	
 	void OnCollisionEnter2D(Collision2D collision){
 		if (collision.gameObject.tag == "Bullet"){
-			EnemyHealth -= 100;
+			EnemyHealth -= 50;
 			collision.gameObject.SetActive(false);
-			if (EnemyHealth <= 0){
+            Score = GameObject.Find("ScoringSystem");
+            Score.GetComponent<Scoring>().NumberOfBugsKilled += 1;
+
+            if (EnemyHealth <= 0){
 			EnemyDying();
 			}
 		}
