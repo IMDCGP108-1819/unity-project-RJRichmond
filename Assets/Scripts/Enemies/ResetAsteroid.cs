@@ -15,7 +15,7 @@ public class ResetAsteroid : MonoBehaviour
     public int AmountOfBugs = 6;
     public bool BugLeft = true;
     public int AmountOfBugsActive = 0;
-
+	private float SpawnDelay = 2f;
     void OnEnable()
     {
         AsteroidHealth = 10;
@@ -53,6 +53,7 @@ public class ResetAsteroid : MonoBehaviour
         if (CurrentEnemies < 6)
         {
             CurrentEnemies += 1;
+			StartCoroutine(WaitForSpawn());
             EnemySpawn();
         }
     }
@@ -99,7 +100,11 @@ public class ResetAsteroid : MonoBehaviour
         {
             ABug.transform.SetPositionAndRotation(SpawnLocation.position, SpawnLocation.rotation);
             ABug.SetActive(true);
+			StartCoroutine(WaitForSpawn());
             AmountOfBugsActive += 1;
         }
     }
+	private IEnumerator WaitForSpawn(){
+		yield return new WaitForSecondsRealtime(SpawnDelay);
+	}
 }

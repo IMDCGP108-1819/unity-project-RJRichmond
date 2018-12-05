@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CharController : MonoBehaviour {
 
@@ -15,6 +16,8 @@ public class CharController : MonoBehaviour {
 	public bool BulletsLeft = true;
 	public int AmountOfBulletsActive = 0;
 	public int AllBullets = 8;
+	public Slider HealthBar;
+	public int MaxHealth = 100;
 	
 	void Start(){
 		for (int i = 0; i < AllBullets; i++)
@@ -38,7 +41,7 @@ public class CharController : MonoBehaviour {
         movement();
         Shooting();
         LevelRestart();
-		
+		HealthBar.value = Health;
 		
     }
             
@@ -93,5 +96,8 @@ public class CharController : MonoBehaviour {
         }
 
     }
-   
+	
+	void HealthSlider(){
+		HealthBar.value = Health / MaxHealth;
+	}
 }
