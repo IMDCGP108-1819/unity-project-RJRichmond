@@ -16,6 +16,7 @@ public class CharController : MonoBehaviour {
 	public bool BulletsLeft = true;
 	public int AmountOfBulletsActive = 0;
 	public int AllBullets = 8;
+	public GameObject HealthObject;
 	public Slider HealthBar;
 	public int MaxHealth = 100;
 	
@@ -25,6 +26,8 @@ public class CharController : MonoBehaviour {
 			PlayerBullets[i] = Instantiate(Bullet);
 			PlayerBullets[i].SetActive(false);
 		}
+		HealthObject = GameObject.FindGameObjectWithTag("HealthBar");
+		HealthBar = HealthObject.GetComponent<Slider>();
 	}
 	
 	private GameObject NewBullet(){
