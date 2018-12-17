@@ -22,7 +22,9 @@ public class CharController : MonoBehaviour {
     public bool GotHit = false;
     public bool iFrames = false;
 
-	void Start(){
+    // In the start function it uses a for loop to create all of the bullet objects and sets them to false ready to be fired, 
+    // the other thing it does in the start function is it gets the health bar so it can be updated later on.
+    void Start(){
 		for (int i = 0; i < AllBullets; i++)
 		{
 			PlayerBullets[i] = Instantiate(Bullet);
@@ -31,7 +33,7 @@ public class CharController : MonoBehaviour {
 		HealthObject = GameObject.FindGameObjectWithTag("HealthBar");
 		HealthBar = HealthObject.GetComponent<Slider>();
 	}
-	
+	// This is where it gets an deactivated bullet and makes the variable new bullet equal to it so it can be used to fire.
 	private GameObject NewBullet(){
 		for (int i = 0; i < AllBullets; i++){
 			if (!PlayerBullets[i].activeSelf){
@@ -40,7 +42,8 @@ public class CharController : MonoBehaviour {
 		}
 		return null;
 	}
-	
+	// In the fixed update variable it gets the firing position (position of the gun) and it preforms all of the basic functions such as movement,shooting and checking,
+    // if the player dies. The last thing is setting the slider value for the health bar equal to the players current health.
     void FixedUpdate() {
         FiringPosition = GameObject.FindGameObjectWithTag("FiringPosition").transform;
         movement();
@@ -48,7 +51,7 @@ public class CharController : MonoBehaviour {
         LevelRestart();
 		HealthBar.value = Health;
     }
-            
+    // In the shooting function it checks to see if the player has fired and then if he has make sure he can fire. if both are true then it starts the Coroutine.
     public void Shooting() {
         if (Input.GetButtonDown("Fire1") && FireAble) {
             
@@ -81,6 +84,8 @@ public class CharController : MonoBehaviour {
        }
    }
 
+    //The firing IEnumerator sets the fire check to false gets the bullet unactive bullet variable and then it sets its position and rotation based on the firing position,
+    //and then sets the bullet to true which would give it the force to fire when its activated, the last thing it does is add 1 to the active bullet variable to keep track of them.
     IEnumerator Firing() {
         FireAble = false;
 		GameObject ABullet = NewBullet();
@@ -93,6 +98,17 @@ public class CharController : MonoBehaviour {
         yield return new WaitForSeconds(FireRate);
         FireAble = true;
    }
+    // Level restart function is pretty simple it checks if the players health is less then 0 and if it is the game ends.
+    void LevelRestart()
+    {
+        if (Health < 0)
+        {
+            SceneManager.LoadScene(0);
+        }
+
+    }
+    // The invincibility IEnumerator is used to give the player Iframes (a period where they cant be damaged) so it sets iframes to true, minuses from the players health
+    // and after 2 seconds resets everything so the gothit check (checking if the player was hit) and iframes to false.
     IEnumerator Invincibility() {
         Health -= 10;
         iFrames = true;
@@ -100,13 +116,8 @@ public class CharController : MonoBehaviour {
         GotHit = false;
         iFrames = false;
     }
-
-    void LevelRestart() {
-        if (Health < 0) {
-            SceneManager.LoadScene(0);
-        }
-
-    }
+    // This collision checker variable is what I use to apply damage to the player, if the player collides with something and the tag on the gameobject is "bug" (enemies),
+    // then it goes through the process of checking if the player has Iframes and if they did get hit then runs the invincibility IEnumerator
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "bug")
