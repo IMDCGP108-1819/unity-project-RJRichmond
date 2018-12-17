@@ -33,6 +33,7 @@ public class ResetAsteroid : MonoBehaviour
             BugEnemies[i].transform.parent = gameObject.transform;
             BugEnemies[i].SetActive(false);
         }
+
     }
 
     private GameObject NewBug()
@@ -49,12 +50,16 @@ public class ResetAsteroid : MonoBehaviour
 
     void FixedUpdate()
     {
-        AsteroidDestroyed();
-        if (CurrentEnemies < 6)
+        if (gameObject.activeSelf)
         {
-            CurrentEnemies += 1;
-			StartCoroutine(WaitForSpawn());
-            EnemySpawn();
+            AsteroidDestroyed();
+            if (CurrentEnemies <= 6)
+            {
+                CurrentEnemies += 1;
+                EnemySpawn();
+                
+            }
+
         }
     }
     public void AsteroidDestroyed()
@@ -72,7 +77,7 @@ public class ResetAsteroid : MonoBehaviour
     }
     ///
     /// This function checks to see if anything is colliding with the asteroid and based on what is actually colliding with it,
-    /// it then acts accordingly, for example if it colliders with a building when spawned it will deactive it and then spawn it again.
+    /// it then acts accordingly, for example if it collides with a building when spawned it will deactivate it and then spawn it again.
     void OnCollisionEnter2D(Collision2D Collision)
     {
         AsteroidSpawner = GameObject.FindGameObjectWithTag("AsteroidSpawner");
@@ -89,22 +94,22 @@ public class ResetAsteroid : MonoBehaviour
             Debug.Log("Asteroid is being shot!");
             Collision.gameObject.SetActive(false);
             AsteroidHealth -= 1;
-
         }
     }
 
     void EnemySpawn()
     {
+        StartCoroutine(WaitForSpawn());
+    }
+    private IEnumerator WaitForSpawn()
+    {
+        yield return new WaitForSecondsRealtime(SpawnDelay);
         GameObject ABug = NewBug();
         if (ABug != null)
         {
             ABug.transform.SetPositionAndRotation(SpawnLocation.position, SpawnLocation.rotation);
             ABug.SetActive(true);
-			StartCoroutine(WaitForSpawn());
             AmountOfBugsActive += 1;
         }
     }
-	private IEnumerator WaitForSpawn(){
-		yield return new WaitForSecondsRealtime(SpawnDelay);
-	}
 }
