@@ -9,6 +9,7 @@ TagManager:
   - AsteroidSpawner
   - FiringPosition
   - HealthBar
+  - bug
   layers:
   - Default
   - TransparentFX

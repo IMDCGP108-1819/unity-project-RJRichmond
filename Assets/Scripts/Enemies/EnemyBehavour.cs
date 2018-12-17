@@ -40,26 +40,27 @@ public class EnemyBehavour : MonoBehaviour {
 			GetComponentInParent<ResetAsteroid>().CurrentEnemies -= 1;
 			gameObject.SetActive(false);
 	}
-	
-	void OnCollisionEnter2D(Collision2D collision){
-		if (collision.gameObject.tag == "Bullet"){
-			EnemyHealth -= 50;
-			collision.gameObject.SetActive(false);
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            EnemyHealth -= 50;
+            collision.gameObject.SetActive(false);
             Score = GameObject.Find("ScoringSystem");
             Score.GetComponent<Scoring>().NumberOfBugsKilled += 1;
 
-            if (EnemyHealth <= 0){
-			EnemyDying();
-			}
-		}
-		else if (collision.gameObject.tag == "Player"){
-			StartCoroutine(DamagePlayer());
-		}
-	}
-	
-	IEnumerator DamagePlayer(){
-		Player.GetComponent<CharController>().Health -= 10;
-		yield return new WaitForSeconds(2f);
-	}
-	
+            if (EnemyHealth <= 0)
+            {
+                EnemyDying();
+            }
+        }
+        else if (collision.gameObject.tag == "Player")
+        {
+            if (Player.GetComponent<CharController>().GotHit == false)
+            {
+                Player.GetComponent<CharController>().GotHit = true;
+            }
+        }
+    }
 }

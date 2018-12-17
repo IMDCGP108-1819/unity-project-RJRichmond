@@ -19,7 +19,9 @@ public class CharController : MonoBehaviour {
 	public GameObject HealthObject;
 	public Slider HealthBar;
 	public int MaxHealth = 100;
-	
+    public bool GotHit = false;
+    public bool iFrames = false;
+
 	void Start(){
 		for (int i = 0; i < AllBullets; i++)
 		{
@@ -45,7 +47,6 @@ public class CharController : MonoBehaviour {
         Shooting();
         LevelRestart();
 		HealthBar.value = Health;
-		
     }
             
     public void Shooting() {
@@ -92,6 +93,13 @@ public class CharController : MonoBehaviour {
         yield return new WaitForSeconds(FireRate);
         FireAble = true;
    }
+    IEnumerator Invincibility() {
+        Health -= 10;
+        iFrames = true;
+        yield return new WaitForSeconds(2f);
+        GotHit = false;
+        iFrames = false;
+    }
 
     void LevelRestart() {
         if (Health < 0) {
@@ -99,8 +107,17 @@ public class CharController : MonoBehaviour {
         }
 
     }
-	
-	void HealthSlider(){
-		HealthBar.value = Health / MaxHealth;
-	}
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "bug")
+        {
+            if (iFrames == false)
+            {
+                if (GotHit == true)
+                {
+                    StartCoroutine(Invincibility());
+                }
+            }
+        }
+    }
 }

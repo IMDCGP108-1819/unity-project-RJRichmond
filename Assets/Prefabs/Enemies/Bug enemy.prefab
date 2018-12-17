@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50048032764238978}
   m_Layer: 10
   m_Name: Bug enemy
-  m_TagString: Untagged
+  m_TagString: bug
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
