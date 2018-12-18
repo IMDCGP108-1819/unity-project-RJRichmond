@@ -16,13 +16,14 @@ public class ResetAsteroid : MonoBehaviour
     public bool BugLeft = true;
     public int AmountOfBugsActive = 0;
 	private float SpawnDelay = 2f;
+
     void OnEnable()
     {
-        AsteroidHealth = 10;
+        AsteroidHealth = 10;                        // Reseting the asteroid health when spawning a new asteroid
 
     }
     // In the start function I am getting all of the game objects/transform which I need and spawning the objects for the list of bugs.
-
+    // This is the same method as how I spawn the asteroid and bullets which is using a list of gameobjects and activating when they are needed.
     void Start()
     {
         AsteroidSpawner = GameObject.FindGameObjectWithTag("AsteroidSpawner");
@@ -35,7 +36,7 @@ public class ResetAsteroid : MonoBehaviour
         }
 
     }
-
+    // This is storing the first non active gameobject from the list in the variable.
     private GameObject NewBug()
     {
         for (int i = 0; i < AmountOfBugs; i++)
@@ -47,7 +48,8 @@ public class ResetAsteroid : MonoBehaviour
         }
         return null;
     }
-
+    // In the fixed update it is checking to see if the asteroid with this script is active and if it isn't then it performs the asteroid destroyed function (health check),
+    // and it checks to see if the max number of enemies are currently spawned from the asteroid being 6 and if they aren't performing the enemyspawn function (setting an enemy to active.)
     void FixedUpdate()
     {
         if (gameObject.activeSelf)
@@ -62,6 +64,9 @@ public class ResetAsteroid : MonoBehaviour
 
         }
     }
+    // In the asteroid destroyed function it is just a basic health check, seeing if the asteroids current health is below 0 if it is,
+    // then it finds the scoring gameobject and gets the script to add to the number of asteroids destroyed variable, finally it sets the object to deactivated and finds,
+    // asteroid spawner script and minuses from the asteroid count variable.
     public void AsteroidDestroyed()
     {
 
@@ -89,6 +94,7 @@ public class ResetAsteroid : MonoBehaviour
             gameObject.SetActive(false);
 
         }
+        // If the asteroid collides with a gameobject with the tag bullet and then minuses from the asteroids health and sets the object which collided with it to deactivated.
         else if (Collision.gameObject.tag == "Bullet")
         {
             Debug.Log("Asteroid is being shot!");
@@ -96,7 +102,9 @@ public class ResetAsteroid : MonoBehaviour
             AsteroidHealth -= 1;
         }
     }
-
+    // The enemy spawn function is running a coroutine which is waiting a spawn delay before then getting the deactivated bug gameobject from the list and then 
+    // it does another check to make sure that a gameobject is in the variable and then it sets the position and location based of the asteroids enemy spawn location.
+    // lastly adding to the current number of active bugs.
     void EnemySpawn()
     {
         StartCoroutine(WaitForSpawn());

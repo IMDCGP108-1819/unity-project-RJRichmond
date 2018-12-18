@@ -13,13 +13,14 @@ public class SpawnAsteroids : MonoBehaviour {
 	public int AmountOfAsteroidsActive = 0;
 	public int AllAsteroids =5;
 	
+    // This is the same as the bullet and bug spawning, essentiually just instaintates a number of asteroids based on the max number (all asteroids) and sets them to false.
 	void Start(){
 		for(int i = 0; i < AllAsteroids; i++){
 			Asteroids[i] = Instantiate(Asteroid);
 			Asteroids[i].SetActive(false);
 		}
 	}
-	
+	// stores a gameobject which isn't currently active.
 	private GameObject NewAsteroid(){
 		for (int i = 0; i < AllAsteroids; i++){
 			if (!Asteroids[i].activeSelf){
@@ -28,7 +29,7 @@ public class SpawnAsteroids : MonoBehaviour {
 		}
 		return null;
 	}
-	
+	// In the fixed update it checks to see if there is currently 5 asteroids active and if not it adds to it and runs the random asteroid function.
     public void FixedUpdate() {
         if (AsteroidCount <= 5) {
             AsteroidCount += 1;
@@ -45,11 +46,10 @@ public class SpawnAsteroids : MonoBehaviour {
 			AnAsteroid.transform.SetPositionAndRotation(pos,Quaternion.identity);
 			AnAsteroid.SetActive(true);
 		}
-        //
-        //Instantiate(Asteroid, pos, Quaternion.identity);
     }
 
     //This is something which is only avaliable in the editor and it is used to show location of the size and center of the area.
+    //so I could set the overall spawn areas for the asteroids.
     void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 0, 0, 0.5f);
