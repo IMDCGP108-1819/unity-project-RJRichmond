@@ -100,13 +100,14 @@ public class CharController : MonoBehaviour {
         FireAble = true;
    }
     // Level restart function is pretty simple it checks if the players health is less then 0 and if it is the game ends.
-    // It also gets the scoring system and makes a boolean equal to true so that it calculates the total score.
+    // It also gets the scoring system and makes a boolean equal to true so that it calculates the total score and also stops the time from recording by setting that boolean to false.
     void LevelRestart()
     {
         if (Health < 0)
         {
             scoreSystem = GameObject.Find("ScoringSystem");
             scoreSystem.GetComponent<Scoring>().RecordScore = true;
+            scoreSystem.GetComponent<Scoring>().ShouldRecord = false;
             SceneManager.LoadScene(0);
         }
 

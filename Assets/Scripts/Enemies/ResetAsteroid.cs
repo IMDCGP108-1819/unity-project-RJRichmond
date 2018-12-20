@@ -19,6 +19,8 @@ public class ResetAsteroid : MonoBehaviour
 
     void OnEnable()
     {
+        Score = GameObject.Find("ScoringSystem");   // This is getting the scoring Gameobject which I am going to use to start the recording on the timer since they will spawn before when the game starts.
+        Score.GetComponent<Scoring>().ShouldRecord = true; // This is starting the timer variable so that it begins to record.
         AsteroidHealth = 10;                        // Reseting the asteroid health when spawning a new asteroid
 
     }

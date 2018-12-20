@@ -12,7 +12,8 @@ public class Scoring : MonoBehaviour {
     public int TotalScore = 0;
     public bool RecordScore = false;
     
-
+    // In the awake function when this object is awaken it then makes a list with all of the gameobjects with the score tag to remove duplicates of the scoring system
+    // It then also performs the reset score function (resetting all counters).
     void Awake() {
         GameObject[] Dupe = GameObject.FindGameObjectsWithTag("Score");
         if (Dupe.Length > 1) {
@@ -36,6 +37,8 @@ public class Scoring : MonoBehaviour {
     // I have added in a check so that when the player dies it then calculates the total score.
         if (RecordScore == true) {
             CalScore();
+            ResetScores();
+            RecordScore = false;
         }
 
     }
@@ -46,7 +49,15 @@ public class Scoring : MonoBehaviour {
         }
     }
     // This function is used to calculate the total score.
+    // It then also performs the reset score function (resetting all counters).
     void CalScore() {
         TotalScore = Mathf.RoundToInt(TimeSurvived * 10) + (NumberOfBugsKilled * 10) + (NumberOfAsteroidsKilled * 100);
+    }
+
+    // This function just resets all of the counter variables
+    void ResetScores() {
+        TimeSurvived = 0f;
+        NumberOfAsteroidsKilled = 0;
+        NumberOfBugsKilled = 0;
     }
 }
