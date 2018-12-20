@@ -12,7 +12,7 @@ public class EnemyBehavour : MonoBehaviour {
 	public int MaxDist = 10;
 	public int MinDist = 4;
 	
-    // In the onenable function it just finds the player using the tag attached to them and resets their health so when they respawn they are reset.
+    // In the on enable function it justs finds the player using the tag attached to them and resets their health so when they respawn they are reset.
 	void OnEnable(){
         Player = GameObject.FindGameObjectWithTag("Player");
 		EnemyHealth = 50;
@@ -38,7 +38,7 @@ public class EnemyBehavour : MonoBehaviour {
 		}
 		
 	}
-	// This function is just misusing from the current enemy count on the asteroid script and then deactivating the gameobject.
+	// This function is just minusing from the current enemy count on the asteroid script and then deactiving the gameobject.
 	void EnemyDying(){
 			print("Check for repeat");
 			GetComponentInParent<ResetAsteroid>().CurrentEnemies -= 1;
@@ -53,7 +53,7 @@ public class EnemyBehavour : MonoBehaviour {
             collision.gameObject.SetActive(false);
             Score = GameObject.Find("ScoringSystem");
             Score.GetComponent<Scoring>().NumberOfBugsKilled += 1;
-     // This is performing the dying function when the enemy has no health.
+     // This is performing the dying funciton when the enemy has no health.
             if (EnemyHealth <= 0)
             {
                 EnemyDying();

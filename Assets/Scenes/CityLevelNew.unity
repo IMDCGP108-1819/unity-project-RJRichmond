@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 660034180}
   m_Layer: 0
   m_Name: ScoringSystem
-  m_TagString: Untagged
+  m_TagString: Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1215,6 +1215,8 @@ MonoBehaviour:
   AsteroidsDestroyed: {fileID: 2050318852}
   TimeSurvivedText: {fileID: 1940761804}
   ShouldRecord: 1
+  TotalScore: 0
+  RecordScore: 0
 --- !u!4 &660034181
 Transform:
   m_ObjectHideFlags: 0
@@ -3770,6 +3772,9 @@ MonoBehaviour:
   HealthObject: {fileID: 0}
   HealthBar: {fileID: 128129634}
   MaxHealth: 100
+  GotHit: 0
+  iFrames: 0
+  scoreSystem: {fileID: 0}
 --- !u!4 &1785887812
 Transform:
   m_ObjectHideFlags: 0
@@ -3792,13 +3797,13 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1785887810}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 1000000
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0

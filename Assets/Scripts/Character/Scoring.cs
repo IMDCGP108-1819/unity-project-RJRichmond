@@ -8,11 +8,19 @@ public class Scoring : MonoBehaviour {
     public int NumberOfAsteroidsKilled = 0;
     public float TimeSurvived = 0f;
     public int Score = 0;
-    public Text BugKilled;
-    public Text AsteroidsDestroyed;
-    public Text TimeSurvivedText;
     public bool ShouldRecord = true;
+    public int TotalScore = 0;
+    public bool RecordScore = false;
+    
 
+    void Awake() {
+        GameObject[] Dupe = GameObject.FindGameObjectsWithTag("Score");
+        if (Dupe.Length > 1) {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
+    
     // The start function resets the variables so the time the player has survived and if it should be recording the time.
     void Start()
     {
@@ -24,9 +32,11 @@ public class Scoring : MonoBehaviour {
     void FixedUpdate()
     {
         Recording();
-        BugKilled.text = ("Bugs: "+ NumberOfBugsKilled);
-        AsteroidsDestroyed.text = ("Asteroids: "+ NumberOfAsteroidsKilled);
-        TimeSurvivedText.text = ("Time Survived: " + Mathf.RoundToInt(TimeSurvived) + " seconds");
+        
+    // I have added in a check so that when the player dies it then calculates the total score.
+        if (RecordScore == true) {
+            CalScore();
+        }
 
     }
 	//The recording variable is adding to the time survived variable by adding time.deltatime which is the time between last and the current frame.
@@ -34,5 +44,9 @@ public class Scoring : MonoBehaviour {
         if (ShouldRecord == true){
             TimeSurvived += 1*Time.deltaTime;
         }
+    }
+    // This function is used to calculate the total score.
+    void CalScore() {
+        TotalScore = Mathf.RoundToInt(TimeSurvived * 10) + (NumberOfBugsKilled * 10) + (NumberOfAsteroidsKilled * 100);
     }
 }

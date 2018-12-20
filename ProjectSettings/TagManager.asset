@@ -10,6 +10,7 @@ TagManager:
   - FiringPosition
   - HealthBar
   - bug
+  - Score
   layers:
   - Default
   - TransparentFX

@@ -21,6 +21,7 @@ public class CharController : MonoBehaviour {
 	public int MaxHealth = 100;
     public bool GotHit = false;
     public bool iFrames = false;
+    public GameObject scoreSystem;
 
     // In the start function it uses a for loop to create all of the bullet objects and sets them to false ready to be fired, 
     // the other thing it does in the start function is it gets the health bar so it can be updated later on.
@@ -99,10 +100,13 @@ public class CharController : MonoBehaviour {
         FireAble = true;
    }
     // Level restart function is pretty simple it checks if the players health is less then 0 and if it is the game ends.
+    // It also gets the scoring system and makes a boolean equal to true so that it calculates the total score.
     void LevelRestart()
     {
         if (Health < 0)
         {
+            scoreSystem = GameObject.Find("ScoringSystem");
+            scoreSystem.GetComponent<Scoring>().RecordScore = true;
             SceneManager.LoadScene(0);
         }
 
