@@ -54,7 +54,7 @@ public class CharController : MonoBehaviour {
     }
     // In the shooting function it checks to see if the player has fired and then if he has make sure he can fire. if both are true then it starts the Coroutine.
     public void Shooting() {
-        if (Input.GetButtonDown("Fire1") && FireAble) {
+        if (Input.GetButton("Fire1") && FireAble) {
             
 			Debug.Log("Shooting happens");
             StartCoroutine(Firing());

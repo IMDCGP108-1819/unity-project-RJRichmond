@@ -51,7 +51,7 @@ public class Scoring : MonoBehaviour {
     // This function is used to calculate the total score.
     // It then also performs the reset score function (resetting all counters).
     void CalScore() {
-        TotalScore = Mathf.RoundToInt(TimeSurvived * 10) + (NumberOfBugsKilled * 10) + (NumberOfAsteroidsKilled * 100);
+        TotalScore = Mathf.RoundToInt(TimeSurvived * 5) + (NumberOfBugsKilled * 10) + (NumberOfAsteroidsKilled * 100);
     }
 
     // This function just resets all of the counter variables
