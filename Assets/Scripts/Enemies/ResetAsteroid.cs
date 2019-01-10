@@ -5,22 +5,26 @@ using UnityEngine;
 public class ResetAsteroid : MonoBehaviour
 {
 
-    public GameObject AsteroidSpawner;
     public int AsteroidHealth = 10;
     public int CurrentEnemies = 0;
+    public int AmountOfBugs = 6;
+    public int AmountOfBugsActive = 0;
+
     public GameObject Bug;
     public GameObject Score;
+    public GameObject AsteroidSpawner;
+    public GameObject[] BugEnemies; // Bug list
+
     public Transform SpawnLocation;
-    public GameObject[] BugEnemies;
-    public int AmountOfBugs = 6;
+
     public bool BugLeft = true;
-    public int AmountOfBugsActive = 0;
+
 	private float SpawnDelay = 2f;
 
     void OnEnable()
     {
-        Score = GameObject.Find("ScoringSystem");   // This is getting the scoring Gameobject which I am going to use to start the recording on the timer since they will spawn before when the game starts.
-        Score.GetComponent<Scoring>().ShouldRecord = true; // This is starting the timer variable so that it begins to record.
+        Score = GameObject.Find("ScoringSystem");   // Finding the object which is called scoring system
+        Score.GetComponent<Scoring>().ShouldRecord = true; // Using the object and getting the scoring component, I set the recording variable to true so that it begins to record.
         AsteroidHealth = 10;                        // Reseting the asteroid health when spawning a new asteroid
 
     }
@@ -29,8 +33,8 @@ public class ResetAsteroid : MonoBehaviour
     void Start()
     {
         AsteroidSpawner = GameObject.FindGameObjectWithTag("AsteroidSpawner");
-        SpawnLocation = this.gameObject.transform.GetChild(0);
-        for (int i = 0; i < AmountOfBugs; i++)
+        SpawnLocation = this.gameObject.transform.GetChild(0); // Getting the first child of this gameobject being the spawn location.
+        for (int i = 0; i < AmountOfBugs; i++) // Runs loop while i is less then the max number of bugs being 6
         {
             BugEnemies[i] = Instantiate(Bug);
             BugEnemies[i].transform.parent = gameObject.transform;
@@ -56,7 +60,7 @@ public class ResetAsteroid : MonoBehaviour
     {
         if (gameObject.activeSelf)
         {
-            AsteroidDestroyed();
+            AsteroidDestroyed(); // Performing asteroid destroyed function
             if (CurrentEnemies <= 6)
             {
                 CurrentEnemies += 1;
@@ -75,19 +79,20 @@ public class ResetAsteroid : MonoBehaviour
         if (AsteroidHealth < 0)
         {
             Debug.Log("Asteroid has been destroyed!");
-            Score = GameObject.Find("ScoringSystem");
-            Score.GetComponent<Scoring>().NumberOfAsteroidsKilled += 1;
+            Score = GameObject.Find("ScoringSystem");       // Finding scoring system object
+            Score.GetComponent<Scoring>().NumberOfAsteroidsKilled += 1; // Using the object found to add to the asteroids killed variable.
             gameObject.SetActive(false);
-            AsteroidSpawner.GetComponent<SpawnAsteroids>().AsteroidCount -= 1;
+            AsteroidSpawner.GetComponent<SpawnAsteroids>().AsteroidCount -= 1; // Using the asteroid spawner object found it minuses from the asteroid count variable.
         }
 
     }
     ///
     /// This function checks to see if anything is colliding with the asteroid and based on what is actually colliding with it,
     /// it then acts accordingly, for example if it collides with a building when spawned it will deactivate it and then spawn it again.
+    /// This makes sure no asteroids can be out of the map.
     void OnCollisionEnter2D(Collision2D Collision)
     {
-        AsteroidSpawner = GameObject.FindGameObjectWithTag("AsteroidSpawner");
+        AsteroidSpawner = GameObject.FindGameObjectWithTag("AsteroidSpawner"); // Getting the asteroid spawner object
 
         if (Collision.gameObject.tag == "Building")
         {
@@ -109,12 +114,12 @@ public class ResetAsteroid : MonoBehaviour
     // lastly adding to the current number of active bugs.
     void EnemySpawn()
     {
-        StartCoroutine(WaitForSpawn());
+        StartCoroutine(WaitForSpawn()); 
     }
     private IEnumerator WaitForSpawn()
     {
-        yield return new WaitForSecondsRealtime(SpawnDelay);
-        GameObject ABug = NewBug();
+        yield return new WaitForSecondsRealtime(SpawnDelay); // Waiting Delay
+        GameObject ABug = NewBug(); // Makes a bug variable equal to a gameobject by running the new bug function
         if (ABug != null)
         {
             ABug.transform.SetPositionAndRotation(SpawnLocation.position, SpawnLocation.rotation);

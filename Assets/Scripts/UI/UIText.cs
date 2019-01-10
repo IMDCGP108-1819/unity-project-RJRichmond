@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI; // Getting access to all of the unity UI functions and types like Text.
 public class UIText : MonoBehaviour {
     public Text BugKilled;
     public Text AsteroidsDestroyed;
     public Text TimeSurvivedText;
+
     public GameObject ScoringSystem;
+
     // The start function is just getting the scoring system so it can access its variables.
     void Start () {
 		ScoringSystem = GameObject.Find("ScoringSystem");

@@ -1107,15 +1107,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.73333335}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d4bd3b3198dd7eb47b9f275b2fe63f52, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1694,15 +1694,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.73333335}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d4bd3b3198dd7eb47b9f275b2fe63f52, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1763,7 +1763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1816,7 +1816,7 @@ GameObject:
   - component: {fileID: 1460274989}
   - component: {fileID: 1460274988}
   m_Layer: 0
-  m_Name: Story text
+  m_Name: Instruction text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1873,14 +1873,15 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Basic Controls:\n\nMovement - W Forward , A - Left  , S - Backwards  ,
-    D - Right , Fire - Mouse Click 1 (Left mouse button)\n\nLooking around : \n\nThe
-    character will look where ever the cursor is, so to shoot at something you would
-    hover the cursor over it.\n\nGoal : \n\nYou are trying to survive an alien invasion
-    of strange squiggle asteroids and the squiggle bugs which emerge from them, the
-    asteroids will appear randomly around the map. Try to survive for as long as possible
-    and destroy as many enemies as you can before you are eaten.\n\nScoring : \n\nYou
-    are awarded 5 points for every second you survived, 10 points for every bug which
-    you destroy and 100 points for every squiggle asteroid you destroy."
+    D - Right , Fire - Mouse Click 1 (Left mouse button) Hold it for continuous fire
+    or tap for burst\n\nLooking around : \n\nThe character will look where ever the
+    cursor is, so to shoot at something you would hover the cursor over it, then fire!\n\nGoal
+    : \n\nYou are trying to survive an alien invasion of strange squiggle asteroids
+    and the squiggle bugs which emerge from them, the asteroids will appear randomly
+    around the map. Try to survive for as long as possible and destroy as many enemies
+    as you can before you are eaten.\n\nScoring : \n\nYou are awarded 5 points for
+    every second you survived, 10 points for every bug which you destroy and 100 points
+    for every squiggle asteroid you destroy."
 --- !u!222 &1460274989
 CanvasRenderer:
   m_ObjectHideFlags: 0
