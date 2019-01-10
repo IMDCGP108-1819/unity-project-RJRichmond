@@ -44,9 +44,10 @@ public class SpawnAsteroids : MonoBehaviour {
     //This is the function which chooses a random location based on the variables of size and center, it then makes an asteroid active and places it some where on the map based on the vectors.
     public void RandomAsteroids()
     {
-    // This is setting a vector based on the center variable which we set and a new vector which is created using random range between the size vector divided by 2 for both the x and y axis.
-    // This then gives a random position on the map which we can use to spawn an asteroid.
-		Vector2 pos = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.x / 2, size.x / 2)); 
+        // This is setting a vector based on the center variable which we set and a new vector which is created using random range between the size vector divided by 2 for both the x and y axis.
+        // This then gives a random position on the map which we can use to spawn an asteroid.
+        // For this I used a tutorial for this (How to spawn objects at random position in a given area) since I didn't really know about random locations.
+        Vector2 pos = center + new Vector2(Random.Range(-size.x / 2, size.x / 2), Random.Range(-size.x / 2, size.x / 2)); 
 		GameObject AnAsteroid = NewAsteroid();
 		if (AnAsteroid != null){
 			AnAsteroid.transform.SetPositionAndRotation(pos,Quaternion.identity);

@@ -30,6 +30,7 @@ public class CharController : MonoBehaviour {
 
     // In the start function it uses a for loop to create all of the bullet objects and sets them to false ready to be fired, 
     // the other thing it does in the start function is it gets the health bar object and then gets the slider component so it can be updated later on.
+    // This list technique which I use instead of instantiating normally is from (Chris Janes - "Github Example project" - bullet script )
     void Start(){
 		for (int i = 0; i < AllBullets; i++)
 		{
