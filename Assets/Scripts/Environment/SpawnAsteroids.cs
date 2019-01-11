@@ -18,6 +18,7 @@ public class SpawnAsteroids : MonoBehaviour {
 	
 	
     // This is the same as the bullet and bug spawning, essentiually just instaintates a number of asteroids based on the max number (all asteroids) and sets them to false.
+    // This technique of pre loading gameobjects is from Chris Janes github - Example project - Bullets
 	void Start(){
 		for(int i = 0; i < AllAsteroids; i++){
 			Asteroids[i] = Instantiate(Asteroid);

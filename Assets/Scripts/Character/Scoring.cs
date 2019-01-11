@@ -21,6 +21,7 @@ public class Scoring : MonoBehaviour {
         if (Dupe.Length > 1) { // If there is more then one gameobject in the list it removes the newer one.
             Destroy(this.gameObject);
         }
+        // Here I used the unity documentaiton of Dont destroy on load as it helped me in making sure the object would be able to show results on a different scene.
         DontDestroyOnLoad(this.gameObject); // Allows a gameobject not to be destroyed when loading a new scene.
     }
     

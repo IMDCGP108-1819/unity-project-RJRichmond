@@ -22,7 +22,7 @@ public class EnemyBehavour : MonoBehaviour {
 
     /// 
     /// Here I was having trouble with making the enemy look at the player to be able to move properly so I used a 2D rotation tutorial since lookat doesn't work for 2D.
-    /// (Rotate or Aim Towards Mouse or Object in 2D - Unity [ENG]), I did change it so it would work properly with what I wanted to do!
+    /// (Rotate or Aim Towards Mouse or Object in 2D - Unity [ENG]), I did change it slightly so it would work properly with what I wanted to do!
     /// 
     // What happens in the fixed update is that a variable stores the players location minus the enemies location every frame.
     // It then stores the players x and y location in radians and then converts them into degrees.

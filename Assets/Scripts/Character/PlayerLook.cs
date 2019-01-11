@@ -10,6 +10,7 @@ public class PlayerLook : MonoBehaviour {
 
     //This function is used to make the character follow the mouses position by updating and then changing the rotation of the player accordingly,
     //so that the player is facing the correct way for firing the weapon.
+    // For this section I used the unity camera screen to world point documentation as it helped me greatly in getting this to work!
     void MouseFollow()
     {
         Vector3 mousePosition = Input.mousePosition;        // Stores the current mouse position

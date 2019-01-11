@@ -30,6 +30,7 @@ public class ResetAsteroid : MonoBehaviour
     }
     // In the start function I am getting all of the game objects/transform which I need and spawning the objects for the list of bugs.
     // This is the same method as how I spawn the asteroid and bullets which is using a list of gameobjects and activating when they are needed.
+    // This technique of pre loading gameobjects is from Chris Janes github - Example project - Bullets
     void Start()
     {
         AsteroidSpawner = GameObject.FindGameObjectWithTag("AsteroidSpawner");
@@ -54,11 +55,11 @@ public class ResetAsteroid : MonoBehaviour
         }
         return null;
     }
-    // In the fixed update it is checking to see if the asteroid with this script is active and if it isn't then it performs the asteroid destroyed function (health check),
+    // In the fixed update it is checking to see if the asteroid gameobject with this script is active and if it isn't then it performs the asteroid destroyed function (health check),
     // and it checks to see if the max number of enemies are currently spawned from the asteroid being 6 and if they aren't performing the enemyspawn function (setting an enemy to active.)
     void FixedUpdate()
     {
-        if (gameObject.activeSelf)
+        if (this.gameObject.activeSelf)
         {
             AsteroidDestroyed(); // Performing asteroid destroyed function
             if (CurrentEnemies <= 6)
